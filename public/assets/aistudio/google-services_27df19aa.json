@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "391365986965",
+    "firebase_url": "https://praxinex-3e3ba-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "praxinex-3e3ba",
+    "storage_bucket": "praxinex-3e3ba.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391365986965:android:41304a495f2f3e8b50a99c",
+        "android_client_info": {
+          "package_name": "com.aistudio.foundrsync.mvkpz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "391365986965-immb5aegdlj1u730tdbsa9pqt1npu9f3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvUQn7jAaqZgPYByGPYGpFHJXCFN71X3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "391365986965-immb5aegdlj1u730tdbsa9pqt1npu9f3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

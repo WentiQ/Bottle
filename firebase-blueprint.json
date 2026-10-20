@@ -1,0 +1,185 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with startup membership information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "isFounder": { "type": "boolean" },
+        "companyId": { "type": "string" },
+        "companyName": { "type": "string" },
+        "avatarInitials": { "type": "string" },
+        "avatarColorHex": { "type": "string" },
+        "presenceStatus": { "type": "string" },
+        "joinedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "email", "companyId", "joinedAt"]
+    },
+    "Company": {
+      "title": "Company",
+      "description": "Startup or company workspace",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "founderUid": { "type": "string" },
+        "founderName": { "type": "string" },
+        "founderEmail": { "type": "string" },
+        "memberUids": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "founderUid", "createdAt"]
+    },
+    "Task": {
+      "title": "Task",
+      "description": "Collaboration task with Tascyn priority and status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "assigneeId": { "type": "string" },
+        "assigneeName": { "type": "string" },
+        "creatorId": { "type": "string" },
+        "creatorName": { "type": "string" },
+        "status": { "type": "string" },
+        "priority": { "type": "string" },
+        "dueDate": { "type": "number" },
+        "minimumTimeRequired": { "type": "string" },
+        "milestoneId": { "type": "string" },
+        "milestoneTitle": { "type": "string" },
+        "tags": { "type": "array" },
+        "pinnedCount": { "type": "number" },
+        "commentsCount": { "type": "number" },
+        "completedAt": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "companyId", "title", "status", "priority", "creatorId", "createdAt"]
+    },
+    "Milestone": {
+      "title": "Milestone",
+      "description": "Target goal or sprint milestone",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "targetDate": { "type": "number" },
+        "isCompleted": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "companyId", "title", "createdAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Team chat message with optional task context attachment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyId": { "type": "string" },
+        "channel": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderRole": { "type": "string" },
+        "content": { "type": "string" },
+        "isPinnedToTask": { "type": "boolean" },
+        "pinnedToTaskId": { "type": "string" },
+        "pinnedToTaskTitle": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "companyId", "senderId", "content", "timestamp"]
+    },
+    "TaskComment": {
+      "title": "TaskComment",
+      "description": "Comment attached to a task",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyId": { "type": "string" },
+        "taskId": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "companyId", "taskId", "authorId", "text", "timestamp"]
+    },
+    "PinnedContext": {
+      "title": "PinnedContext",
+      "description": "Chat snippet pinned to task for contextual reference",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyId": { "type": "string" },
+        "taskId": { "type": "string" },
+        "originalMessageId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorRole": { "type": "string" },
+        "messageText": { "type": "string" },
+        "channel": { "type": "string" },
+        "originalTimestamp": { "type": "number" },
+        "pinnedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "companyId", "taskId", "originalMessageId", "pinnedAt"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Team activity log entry",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyId": { "type": "string" },
+        "actorName": { "type": "string" },
+        "actionType": { "type": "string" },
+        "description": { "type": "string" },
+        "targetTaskId": { "type": "string" },
+        "targetTaskTitle": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "companyId", "actorName", "actionType", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles indexed by Auth UID"
+    },
+    "/companies/{companyId}": {
+      "schema": { "$ref": "#/entities/Company" },
+      "description": "Startup workspace profiles"
+    },
+    "/tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/Task" },
+      "description": "Company tasks and backlog"
+    },
+    "/milestones/{milestoneId}": {
+      "schema": { "$ref": "#/entities/Milestone" },
+      "description": "Company delivery milestones"
+    },
+    "/chat_messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ChatMessage" },
+      "description": "Company-wide chat discussions"
+    },
+    "/task_comments/{commentId}": {
+      "schema": { "$ref": "#/entities/TaskComment" },
+      "description": "Discussion comments on a task"
+    },
+    "/pinned_contexts/{contextId}": {
+      "schema": { "$ref": "#/entities/PinnedContext" },
+      "description": "Pinned message snippets attached to a task"
+    },
+    "/activity_logs/{activityId}": {
+      "schema": { "$ref": "#/entities/ActivityLog" },
+      "description": "Audit and activity log entries for the team"
+    }
+  }
+}
