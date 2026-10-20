@@ -1,13 +1,11 @@
 package com.example.ui.components
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Hexagon
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -18,9 +16,10 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.ui.theme.ElectricIndigo
+import com.example.R
 import com.example.ui.theme.PureWhite
 import com.example.ui.theme.VoidBlack
 
@@ -186,10 +185,9 @@ fun QrCodeView(
             modifier = Modifier.size(sizeDp * 0.18f)
         ) {
             Box(contentAlignment = Alignment.Center) {
-                Icon(
-                    imageVector = Icons.Default.Hexagon,
+                Image(
+                    painter = painterResource(R.drawable.logo),
                     contentDescription = null,
-                    tint = ElectricIndigo,
                     modifier = Modifier.size(sizeDp * 0.12f)
                 )
             }
